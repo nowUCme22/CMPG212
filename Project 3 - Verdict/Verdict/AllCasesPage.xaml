@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:VerdictProject3.Converters"
+             x:Class="VerdictProject3.AllCasesPage"
+             Title="All Cases"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <ScrollView>
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <converters:BoolToStatusConverter x:Key="BoolToStatusConverter" />
+            </ResourceDictionary>
+        </ContentPage.Resources>
+
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <!-- Back Button -->
+            <Button Text="⬅ Back"
+                    Clicked="OnBackClicked"
+                    BackgroundColor="{DynamicResource PrimaryBlue}"
+                    TextColor="{DynamicResource ButtonTextColor}"
+                    WidthRequest="80"
+                    HorizontalOptions="Start"
+                    Margin="10"/>
+
+
+            <!-- Page Title -->
+            <Label 
+            Text="All Cases"
+            FontSize="24"
+            FontAttributes="Bold"
+            TextColor="{DynamicResource PrimaryBlue}" 
+            HorizontalOptions="Center" />
+
+            <!-- Filter Buttons -->
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Button Text="All" Clicked="ShowAllCases"
+                    BackgroundColor="{DynamicResource PrimaryBlue}"
+                    TextColor="{DynamicResource ButtonTextColor}" />
+                <Button Text="Open Cases" Clicked="ShowOpenCases"
+                    BackgroundColor="{DynamicResource PrimaryBlue}"
+                    TextColor="{DynamicResource ButtonTextColor}" />
+                <Button Text="Closed Cases" Clicked="ShowClosedCases"
+                    BackgroundColor="{DynamicResource PrimaryBlue}"
+                    TextColor="{DynamicResource ButtonTextColor}" />
+            </HorizontalStackLayout>
+
+            <!-- Case List -->
+            <CollectionView x:Name="AllCasesListView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="{DynamicResource EntryBackground}"
+                           CornerRadius="10"
+                           Padding="10"
+                           Margin="5">
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="{Binding CaseIdentifier}"
+                                   FontSize="18"
+                                   TextColor="{DynamicResource MainText}" />
+                                <Label Text="{Binding Description}"
+                                   FontSize="18"
+                                   TextColor="{DynamicResource MainText}" />
+                                <Label Text="{Binding AgentBadge, StringFormat='Created by: {0}'}"
+                                   FontSize="18"
+                                   TextColor="{DynamicResource MainText}" />
+                                <Label Text="{Binding IsClosed, Converter={StaticResource BoolToStatusConverter}}"
+                                   FontSize="18"
+                                   TextColor="{DynamicResource AccentRed}" />
+                                <Label Text="{Binding DateCreated, StringFormat='Created: {0: dd MMM yyyy}'}"
+                                   FontSize="18"
+                                   TextColor="{DynamicResource SecondaryText}" />
+                                <Label Text="{Binding DateClosed, StringFormat='Closed: {0: dd MMM yyyy}'}"
+                                   FontSize="18"
+                                   TextColor="{DynamicResource SecondaryText}"
+                                   IsVisible="{Binding IsClosed}" />
+
+                                <!-- Action Buttons -->
+                                <HorizontalStackLayout Spacing="10">
+                                    <Button Text="Edit"
+                                        FontSize="12"
+                                        Clicked="OnEditCaseClicked"
+                                        CommandParameter="{Binding .}" />
+                                    <Button Text="Delete"
+                                        FontSize="12"
+                                        BackgroundColor="{DynamicResource AccentRed}"
+                                        TextColor="{DynamicResource ButtonTextColor}"
+                                        Clicked="OnDeleteCaseClicked"
+                                        CommandParameter="{Binding .}" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

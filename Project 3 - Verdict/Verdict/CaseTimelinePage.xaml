@@ -1,0 +1,38 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VerdictProject3.CaseTimelinePage"
+             Title="Case Timeline"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <VerticalStackLayout BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+        <!-- Back Button -->
+        <Button Text=" Back"
+                Clicked="OnBackClicked"
+                BackgroundColor="{DynamicResource PrimaryBlue}"
+                TextColor="{DynamicResource ButtonTextColor}"
+                WidthRequest="80"
+                HorizontalOptions="Start"
+                Margin="10"/>
+
+        <!-- Horizontal Scroll Timeline with visible track -->
+        <ScrollView Orientation="Horizontal"
+                    HorizontalScrollBarVisibility="Always"
+                    BackgroundColor="#D0D0D0"
+                    HeightRequest="600"
+                    Padding="20">
+
+            <Grid x:Name="TimelineGrid"
+                  Padding="30"
+                  RowSpacing="30"
+                  ColumnSpacing="50"
+                  HorizontalOptions="Start"
+                  VerticalOptions="Center"
+                  BackgroundColor="White"
+                  MinimumWidthRequest="1500"
+                  HeightRequest="350"/>
+        </ScrollView>
+
+    </VerticalStackLayout>
+
+</ContentPage>

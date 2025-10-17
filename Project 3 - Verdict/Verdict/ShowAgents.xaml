@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VerdictProject3.ShowAgents"
+             Title="Agents"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <Button Text="⬅ Back"
+        Clicked="OnBackClicked"
+        BackgroundColor="{DynamicResource PrimaryBlue}"
+        TextColor="{DynamicResource ButtonTextColor}"
+        WidthRequest="80"
+        HorizontalOptions="Start"
+        Margin="10"/>
+
+
+        <!-- Heading -->
+        <Label Text="All Registered Agents"
+               FontSize="26"
+               FontAttributes="Bold"
+               TextColor="{DynamicResource PrimaryBlue}"
+               HorizontalOptions="Center" />
+
+        <!-- Agent List -->
+        <CollectionView x:Name="AgentListView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="{DynamicResource PrimaryBlue}"
+                           BackgroundColor="{DynamicResource EntryBackground}"
+                           CornerRadius="10"
+                           Padding="10"
+                           Margin="5">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Name}" 
+                                   FontSize="18" 
+                                   TextColor="{DynamicResource MainText}" />
+                            <Label Text="{Binding PoliceNumber}" 
+                                   FontSize="14" 
+                                   TextColor="{DynamicResource SecondaryText}" />
+                            <Label Text="{Binding Email}" 
+                                   FontSize="12" 
+                                   TextColor="{DynamicResource SecondaryText}" />
+                            <HorizontalStackLayout Spacing="10">
+                                <Button Text="Edit" Clicked="OnEditAgentClicked" CommandParameter="{Binding}" />
+                                <Button Text="Delete" Clicked="OnDeleteAgentClicked" CommandParameter="{Binding}" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

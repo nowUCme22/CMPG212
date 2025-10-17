@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VerdictProject3.SignUpPage"
+             Title="Sign Up Page"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="40" Spacing="25" VerticalOptions="Center">
+
+            <!-- App Title -->
+            <Label Text="Verdict"
+                   FontSize="100"
+                   FontAttributes="Bold"
+                   TextColor="{DynamicResource PrimaryBlue}"
+                   HorizontalOptions="Center" />
+
+            <!-- Slogan -->
+            <Label Text="Your timeline to the truth"
+                   FontSize="30"
+                   TextColor="{DynamicResource AccentRed}"
+                   HorizontalOptions="Center" />
+
+            <!-- Name -->
+            <Entry Placeholder="Name and Surname"
+                   x:Name="NameEntry"
+                   TextColor="{DynamicResource MainText}"
+                   PlaceholderColor="{DynamicResource SecondaryText}"
+                   Keyboard="Text"
+                   BackgroundColor="{DynamicResource EntryBackground}"
+                   HeightRequest="50" />
+
+            <!-- Police number -->
+            <Entry Placeholder="Police Badge Number"
+                   x:Name="NumberEntry"
+                   TextColor="{DynamicResource MainText}"
+                   PlaceholderColor="{DynamicResource SecondaryText}"
+                   Keyboard="Numeric"
+                   BackgroundColor="{DynamicResource EntryBackground}"
+                   HeightRequest="50" />
+
+            <!-- Password -->
+            <Entry Placeholder="Password"
+                   x:Name="PasswordEntry"
+                   IsPassword="True"
+                   TextColor="{DynamicResource MainText}"
+                   PlaceholderColor="{DynamicResource SecondaryText}"
+                   BackgroundColor="{DynamicResource EntryBackground}"
+                   HeightRequest="50" />
+
+            <!-- Sign Up Button -->
+            <Button Text="Sign Up"
+                    BackgroundColor="{DynamicResource AccentRed}"
+                    TextColor="{DynamicResource PageBackgroundColor}"
+                    CornerRadius="8"
+                    HeightRequest="50"
+                    Clicked="OnSignUpClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

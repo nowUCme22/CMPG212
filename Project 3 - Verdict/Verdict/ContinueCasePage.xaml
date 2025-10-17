@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VerdictProject3.ContinueCasePage"
+             Title="Continue Case"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Button Text="⬅ Back"
+                    Clicked="OnBackClicked"
+                    BackgroundColor="{DynamicResource PrimaryBlue}"
+                    TextColor="{DynamicResource ButtonTextColor}"
+                    WidthRequest="80"
+                    HorizontalOptions="Start"
+                    Margin="10"/>
+
+
+            <!-- Case Selector -->
+            <Label Text="Select Case"
+                   FontSize="20"
+                   TextColor="{DynamicResource PrimaryBlue}" />
+            <Picker x:Name="CasePicker"
+                    Title="Choose a case"
+                    TitleColor="{DynamicResource SecondaryText}"
+                    TextColor="{DynamicResource MainText}"
+                    BackgroundColor="{DynamicResource EntryBackground}"
+                    SelectedIndexChanged="OnCaseSelected" />
+
+            <!-- Case Details -->
+            <StackLayout x:Name="CaseDetailsPanel" IsVisible="False">
+                <Label x:Name="CaseIdLabel" TextColor="{DynamicResource PrimaryBlue}" FontAttributes="Bold" />
+                <Label x:Name="AgentLabel" TextColor="{DynamicResource PrimaryBlue}" />
+                <Label x:Name="DescriptionLabel" TextColor="{DynamicResource PrimaryBlue}" />
+            </StackLayout>
+
+            <!-- Existing Entries -->
+            <Label Text="Case Entries"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="{DynamicResource PrimaryBlue}" />
+
+            <CollectionView x:Name="EntryListView" HeightRequest="250">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="{DynamicResource EntryBackground}" CornerRadius="10" Padding="10" Margin="5">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding EntryType}" FontAttributes="Bold" TextColor="{DynamicResource MainText}" />
+                                <Label Text="{Binding Summary}" TextColor="{DynamicResource SecondaryText}" />
+                                <Label Text="{Binding Date, StringFormat='Date: {0:dd MMM yyyy}'}" FontSize="12" TextColor="{DynamicResource SecondaryText}" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- View suspect and evidence buttons -->
+            <HorizontalStackLayout IsVisible="True" Spacing="10">
+                <Button Text="View Suspects"
+                        BackgroundColor="{DynamicResource AccentRed}"
+                        TextColor="{DynamicResource PageBackgroundColor}"
+                        Clicked="OnViewSuspectsClicked" />
+                <Button Text="View Evidence"
+                        BackgroundColor="{DynamicResource AccentRed}"
+                        TextColor="{DynamicResource PageBackgroundColor}"
+                        Clicked="OnViewEvidenceClicked" />
+            </HorizontalStackLayout>
+
+            <!-- Add New Entry -->
+            <Label Text="Add New Entry"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="{DynamicResource PrimaryBlue}" />
+
+            <DatePicker x:Name="EntryDatePicker"
+                        BackgroundColor="{DynamicResource EntryBackground}"
+                        TextColor="{DynamicResource MainText}" />
+
+            <Picker x:Name="EntryTypePicker"
+                    Title="Entry Type"
+                    BackgroundColor="{DynamicResource EntryBackground}"
+                    TextColor="{DynamicResource MainText}"
+                    TitleColor="{DynamicResource SecondaryText}"
+                    SelectedIndexChanged="OnEntryTypeChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Interview</x:String>
+                        <x:String>Surveillance</x:String>
+                        <x:String>Arrest</x:String>
+                        <x:String>Suspect</x:String>
+                        <x:String>Evidence</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Close Case Switch -->
+            <StackLayout x:Name="CloseCasePanel" IsVisible="False">
+                <Label Text="Mark this case as closed"
+                       TextColor="{DynamicResource PrimaryBlue}" />
+                <Switch x:Name="CloseCaseSwitch" />
+                <StackLayout x:Name="ArrestSuspectPanel" IsVisible="False">
+                    <Label Text="Select Suspect to Mark as Arrested"
+                            TextColor="{DynamicResource MainText}" />
+                    <Picker x:Name="ArrestedSuspectPicker"
+                            Title="Choose suspect"
+                            ItemDisplayBinding="{Binding FullName}" />
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Entry Fields -->
+            <Entry x:Name="SummaryEntry"
+                   Placeholder="Summary"
+                   BackgroundColor="{DynamicResource EntryBackground}"
+                   TextColor="{DynamicResource MainText}" />
+
+            <Editor x:Name="DetailsEntry"
+                    Placeholder="Important Details"
+                    HeightRequest="100"
+                    BackgroundColor="{DynamicResource EntryBackground}"
+                    TextColor="{DynamicResource MainText}" />
+
+            <!-- Suspect Fields -->
+            <StackLayout x:Name="SuspectFields" IsVisible="False">
+                <Entry x:Name="SuspectNameEntry" Placeholder="Suspect Name"
+                       BackgroundColor="{DynamicResource EntryBackground}"
+                       TextColor="{DynamicResource MainText}" />
+                <Entry x:Name="SuspectSurnameEntry" Placeholder="Suspect Surname"
+                       BackgroundColor="{DynamicResource EntryBackground}"
+                       TextColor="{DynamicResource MainText}" />
+                <Picker x:Name="SuspectRolePicker"
+                        Title="Role"
+                        BackgroundColor="{DynamicResource EntryBackground}"
+                        TextColor="{DynamicResource MainText}">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Suspect</x:String>
+                            <x:String>Witness</x:String>
+                            <x:String>Victim</x:String>
+                            <x:String>Guilty</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
+
+            <!-- Evidence Fields -->
+            <StackLayout x:Name="EvidenceFields" IsVisible="False">
+                <Entry x:Name="EvidenceTypeEntry" Placeholder="Evidence Type"
+                       BackgroundColor="{DynamicResource EntryBackground}"
+                       TextColor="{DynamicResource MainText}" />
+                <Entry x:Name="EvidenceLinkedSuspectEntry" Placeholder="Linked Suspect (optional)"
+                       BackgroundColor="{DynamicResource EntryBackground}"
+                       TextColor="{DynamicResource MainText}" />
+                <Entry x:Name="FilePathEntry" Placeholder="File Path (optional)"
+                       BackgroundColor="{DynamicResource EntryBackground}"
+                       TextColor="{DynamicResource MainText}" />
+            </StackLayout>
+
+            <Button Text="Save Entry"
+                    BackgroundColor="{DynamicResource AccentRed}"
+                    TextColor="{DynamicResource PageBackgroundColor}"
+                    Clicked="OnSaveEntryClicked"
+                    HeightRequest="50" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="VerdictProject3.AddCasePage"
+             Title="New Case"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20">
+
+            <!--back button-->
+                <Button Text="⬅ Back"
+                    Clicked="OnBackClicked"
+                    BackgroundColor="{DynamicResource PrimaryBlue}"
+                    TextColor="{DynamicResource ButtonTextColor}"
+                    WidthRequest="80"
+                    HorizontalOptions="Start"
+                    Margin="10"/>
+
+            <!-- Heading -->
+            <Label Text="Add New Case"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="{DynamicResource PrimaryBlue}"
+                   HorizontalOptions="Center" />
+
+            <!-- Case ID -->
+            <Entry x:Name="CaseIdEntry"
+                   Placeholder="Case ID (e.g. CASE-001)"
+                   TextColor="{DynamicResource MainText}"
+                   PlaceholderColor="{DynamicResource SecondaryText}"
+                   BackgroundColor="{DynamicResource EntryBackground}"
+                   HeightRequest="50" />
+
+            <!-- Agent Badge -->
+            <Entry x:Name="AgentBadgeEntry"
+                   Placeholder="Agent Badge Number"
+                   TextColor="{DynamicResource MainText}"
+                   PlaceholderColor="{DynamicResource SecondaryText}"
+                   BackgroundColor="{DynamicResource EntryBackground}"
+                   HeightRequest="50" />
+
+            <!-- Case Description -->
+            <Editor x:Name="DescriptionEntry"
+                    Placeholder="Case Description"
+                    TextColor="{DynamicResource MainText}"
+                    PlaceholderColor="{DynamicResource SecondaryText}"
+                    BackgroundColor="{DynamicResource EntryBackground}"
+                    AutoSize="TextChanges"
+                    HeightRequest="100" />
+
+            <!-- Date Created -->
+            <DatePicker x:Name="DateCreatedPicker"
+                        TextColor="{DynamicResource MainText}"
+                        BackgroundColor="{DynamicResource EntryBackground}"
+                        Date="{x:Static sys:DateTime.Now}" />
+
+            <!-- Save Button -->
+            <Button Text="Save Case"
+                    Clicked="OnSaveCaseClicked"
+                    BackgroundColor="{DynamicResource AccentRed}"
+                    TextColor="{DynamicResource PageBackgroundColor}"
+                    HeightRequest="50" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

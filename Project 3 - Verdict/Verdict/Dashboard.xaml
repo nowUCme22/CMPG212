@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VerdictProject3.Dashboard"
+             Title="Dashboard"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20">
+
+            <!-- Heading -->
+            <Label Text="Dashboard"
+               FontSize="32"
+               FontAttributes="Bold"
+               TextColor="{DynamicResource PrimaryBlue}"
+               HorizontalOptions="Center" />
+
+            <!-- Welcome Agent -->
+            <Label x:Name="WelcomeLabel"
+               FontSize="18"
+               TextColor="{DynamicResource AccentRed}"
+               HorizontalOptions="Center" />
+
+            <!-- Row 1: New Case + Continue -->
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+                <!-- New Case -->
+                <Frame BackgroundColor="{DynamicResource PrimaryBlue}"
+                   CornerRadius="15"
+                   WidthRequest="150"
+                   HeightRequest="100"
+                   Padding="10"
+                   HasShadow="True">
+                    <VerticalStackLayout>
+                        <Label Text="📝" FontSize="32" HorizontalOptions="Center" />
+                        <Label Text="New Case"
+                           TextColor="{DynamicResource ButtonTextColor}"
+                           FontSize="14"
+                           HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnAddNewCaseTapped" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <!-- Continue Case -->
+                <Frame BackgroundColor="{DynamicResource PrimaryBlue}"
+                   CornerRadius="15"
+                   WidthRequest="150"
+                   HeightRequest="100"
+                   Padding="10"
+                   HasShadow="True">
+                    <VerticalStackLayout>
+                        <Label Text="📂" FontSize="32" HorizontalOptions="Center" />
+                        <Label Text="Continue"
+                           TextColor="{DynamicResource ButtonTextColor}"
+                           FontSize="14"
+                           HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnContinueCaseTapped" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </HorizontalStackLayout>
+
+            <!-- Row 2: My Cases + Agents -->
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+                <!-- My Cases -->
+                <Frame BackgroundColor="{DynamicResource PrimaryBlue}"
+                   CornerRadius="15"
+                   WidthRequest="150"
+                   HeightRequest="100"
+                   Padding="10"
+                   HasShadow="True">
+                    <VerticalStackLayout>
+                        <Label Text="📋" FontSize="32" HorizontalOptions="Center" />
+                        <Label Text="My Cases"
+                           TextColor="{DynamicResource ButtonTextColor}"
+                           FontSize="14"
+                           HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnMyCasesTapped" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <!-- Agents -->
+                <Frame BackgroundColor="{DynamicResource PrimaryBlue}"
+                   CornerRadius="15"
+                   WidthRequest="150"
+                   HeightRequest="100"
+                   Padding="10"
+                   HasShadow="True">
+                    <VerticalStackLayout>
+                        <Label Text="🧑‍💼" FontSize="32" HorizontalOptions="Center" />
+                        <Label Text="Agents"
+                           TextColor="{DynamicResource ButtonTextColor}"
+                           FontSize="14"
+                           HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnAgentsTapped" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </HorizontalStackLayout>
+
+            <!-- Row 3: All Cases + Arrested -->
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+                <!-- All Cases -->
+                <Frame BackgroundColor="{DynamicResource PrimaryBlue}"
+                   CornerRadius="15"
+                   WidthRequest="150"
+                   HeightRequest="100"
+                   Padding="10"
+                   HasShadow="True">
+                    <VerticalStackLayout>
+                        <Label Text="📋" FontSize="32" HorizontalOptions="Center" />
+                        <Label Text="All Cases"
+                           TextColor="{DynamicResource ButtonTextColor}"
+                           FontSize="14"
+                           HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnAllCasesTapped" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <!-- View Arrested Suspects -->
+                <Frame BackgroundColor="{DynamicResource PrimaryBlue}"
+                   CornerRadius="15"
+                   WidthRequest="150"
+                   HeightRequest="100"
+                   Padding="10"
+                   HasShadow="True">
+                    <VerticalStackLayout>
+                        <Label Text="👮" FontSize="32" HorizontalOptions="Center" />
+                        <Label Text="View Arrested Suspects"
+                           TextColor="{DynamicResource ButtonTextColor}"
+                           FontSize="14"
+                           HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnViewArrestedClicked" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </HorizontalStackLayout>
+
+            <Button Text="🚪 Sign Out"
+                    Clicked="OnSignOutClicked"
+                    BackgroundColor="{DynamicResource AccentRed}"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    Margin="20,30,20,10"
+                    HorizontalOptions="Center"
+                    WidthRequest="150" />
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

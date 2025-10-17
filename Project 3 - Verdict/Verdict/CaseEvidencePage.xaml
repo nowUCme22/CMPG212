@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VerdictProject3.CaseEvidencePage"
+             Title="Case Evidence"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <Button Text="⬅ Back"
+                Clicked="OnBackClicked"
+                BackgroundColor="{DynamicResource PrimaryBlue}"
+                TextColor="{DynamicResource ButtonTextColor}"
+                WidthRequest="80"
+                HorizontalOptions="Start"
+                Margin="10"/>   
+
+
+        <!-- Heading -->
+        <Label 
+            Text="Evidence"
+            FontSize="24"
+            FontAttributes="Bold"
+            TextColor="{DynamicResource PrimaryBlue}"
+            HorizontalOptions="Center" />
+
+        <!-- Filter Bar -->
+        <Entry x:Name="FilterEntry"
+               Placeholder="Filter by type or suspect..."
+               BackgroundColor="{DynamicResource EntryBackground}"
+               TextColor="{DynamicResource MainText}"
+               PlaceholderColor="{DynamicResource SecondaryText}"
+               TextChanged="OnFilterTextChanged" />
+
+        <!-- Evidence List -->
+        <CollectionView x:Name="EvidenceListView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="{DynamicResource EntryBackground}"
+                           CornerRadius="10"
+                           Padding="10"
+                           Margin="5">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Type}" 
+                                   FontSize="18" 
+                                   TextColor="{DynamicResource MainText}" />
+                            <Label Text="{Binding Description}" 
+                                   FontSize="14" 
+                                   TextColor="{DynamicResource MainText}" />
+                            <Label Text="{Binding SuspectLinked, StringFormat='Linked to: {0}'}" 
+                                   FontSize="12" 
+                                   TextColor="{DynamicResource SecondaryText}" />
+                            <Label Text="{Binding DateCollected, StringFormat='Date: {0:dd MMM yyyy}'}" 
+                                   FontSize="12" 
+                                   TextColor="{DynamicResource SecondaryText}" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

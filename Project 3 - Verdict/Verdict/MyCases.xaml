@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VerdictProject3.MyCases"
+             Title="My Cases"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <Button Text="⬅ Back"
+                Clicked="OnBackClicked"
+                BackgroundColor="{DynamicResource PrimaryBlue}"
+                TextColor="{DynamicResource ButtonTextColor}"
+                WidthRequest="80"
+                HorizontalOptions="Start"
+                Margin="10"/>
+
+
+        <!-- Title -->
+        <Label Text="Your Cases"
+               FontSize="26"
+               FontAttributes="Bold"
+               TextColor="{DynamicResource PrimaryBlue}"
+               HorizontalOptions="Center" />
+
+        <!-- Case List -->
+        <CollectionView x:Name="CasesListView"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="{DynamicResource PrimaryBlue}"
+                           BackgroundColor="{DynamicResource EntryBackground}"
+                           CornerRadius="10"
+                           Padding="10"
+                           Margin="5">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding CaseIdentifier}"
+                                   FontSize="18"
+                                   TextColor="{DynamicResource MainText}" />
+                            <Label Text="{Binding Description}"
+                                   FontSize="14"
+                                   TextColor="{DynamicResource SecondaryText}" />
+                            <Label Text="{Binding DateCreated, StringFormat='Created: {0:dd MMM yyyy}'}"
+                                   FontSize="12"
+                                   TextColor="{DynamicResource SecondaryText}" />
+                            <Button Text="🕵 View Timeline"
+                                    Clicked="OnViewTimelineClicked"
+                                    CommandParameter="{Binding ID}"
+                                    BackgroundColor="Transparent"
+                                    TextColor="{DynamicResource PrimaryBlue}"
+                                    FontAttributes="Bold"
+                                    BorderWidth="1"
+                                    BorderColor="{DynamicResource PrimaryBlue}"
+                                    CornerRadius="6"
+                                    Padding="4"
+                                    Margin="0,10,0,0" />
+
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Case Count -->
+        <Label x:Name="CaseCountLabel"
+               FontSize="16"
+               TextColor="{DynamicResource PrimaryBlue}"
+               HorizontalOptions="Center"
+               Margin="10" />
+        
+        
+
+    </VerticalStackLayout>
+</ContentPage>

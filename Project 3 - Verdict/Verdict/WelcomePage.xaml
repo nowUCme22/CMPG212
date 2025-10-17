@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VerdictProject3.WelcomePage"
+             Title="Welcome Page"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <VerticalStackLayout Padding="10" Spacing="5" VerticalOptions="Center">
+        <!-- Logo -->
+        <Image Source="verdictlogo.png"
+               HeightRequest="500"
+               WidthRequest="500"
+               HorizontalOptions="Center"
+               Margin="0,60,0,20" />
+
+        <!-- Buttons -->
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+            <Button Text="Log in"
+                    Clicked="OnLoginClicked"
+                    WidthRequest="130"
+                    BackgroundColor="{DynamicResource PrimaryBlue}"
+                    TextColor="{DynamicResource ButtonTextColor}" />
+
+            <Button Text="Sign up"
+                    Clicked="OnSignUpClicked"
+                    WidthRequest="130"
+                    BackgroundColor="{DynamicResource PrimaryBlue}"
+                    TextColor="{DynamicResource ButtonTextColor}" />
+        </HorizontalStackLayout>
+
+        
+
+    </VerticalStackLayout>
+</ContentPage>

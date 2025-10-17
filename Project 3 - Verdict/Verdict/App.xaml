@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VerdictProject3.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!-- Colors -->
+            <Color x:Key="PageBackgroundColor">#FFFFFF</Color>
+            <!-- Light background -->
+            <Color x:Key="PrimaryBlue">#1B263B</Color>
+            <Color x:Key="AccentRed">#E63946</Color>
+            <Color x:Key="MainText">#000000</Color>
+            <!-- Black text -->
+            <Color x:Key="SecondaryText">#555555</Color>
+            <Color x:Key="EntryBackground">#F0F0F0</Color>
+            <!-- Light grey input fields -->
+            <Color x:Key="EntryBorderColor">#CCCCCC</Color>
+            <Color x:Key="ButtonTextColor">#FFFFFF</Color>
+
+            <!-- Label style -->
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource MainText}" />
+            </Style>
+
+            <!-- Button style -->
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryBlue}" />
+                <Setter Property="TextColor" Value="{DynamicResource ButtonTextColor}" />
+                <Setter Property="CornerRadius" Value="6" />
+            </Style>
+
+            <!-- Entry (input) style -->
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="{DynamicResource MainText}" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource EntryBackground}" />
+                <Setter Property="PlaceholderColor" Value="{DynamicResource SecondaryText}" />
+                <Setter Property="HeightRequest" Value="44" />
+            </Style>
+
+            <!-- Picker (dropdown) style -->
+            <Style TargetType="Picker">
+                <Setter Property="TextColor" Value="{DynamicResource MainText}" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource EntryBackground}" />
+                <Setter Property="TitleColor" Value="{DynamicResource SecondaryText}" />
+                <Setter Property="HeightRequest" Value="44" />
+            </Style>
+
+            <!-- Editor (multiline input) style -->
+            <Style TargetType="Editor">
+                <Setter Property="TextColor" Value="{DynamicResource MainText}" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource EntryBackground}" />
+                <Setter Property="PlaceholderColor" Value="{DynamicResource SecondaryText}" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
